@@ -1,0 +1,56 @@
+# 🎬 Movies Metadata Analysis — NTI Final Project
+
+Cleaning, analysis, and interactive dashboarding of a 45K+ movie dataset (TMDB Movies Metadata), built as the final project for the NTI Data Analysis track.
+
+## 📌 Overview
+
+This project turns a large, messy movie catalogue into a reliable analytics asset and answers real business questions about profitability, genres, and audience ratings — then visualizes everything in an interactive Power BI dashboard.
+
+**Dataset:** 45,346 movies · Release years 1888–2020 · Source: TMDB / Movies Metadata
+
+## 📂 Project Structure
+
+```
+├── New analysis.py                     # Main data cleaning & transformation script
+├── movies_metadata_cleaned (2).csv     # Intermediate cleaned file
+├── movies_metadata_final.csv           # Final analysis-ready dataset
+├── movies_metadata_final.xlsx          # Final dataset (Excel format)
+├── Project.pbix                        # Power BI dashboard
+└── Data_Analysis_Project_NTI.docx      # Full project report
+```
+
+## 🧹 Data Cleaning
+
+The cleaning script (`New analysis.py`) runs in 10 stages:
+
+1. Remove duplicate records (by movie id)
+2. Parse and validate release dates
+3. Normalize text fields (strip whitespace, standardize case)
+4. Fill missing text fields with defaults
+5. Fix invalid numeric values (negative budget/revenue/votes)
+6. Add derived columns: `profit` and `roi`
+7. Remove impossible values (e.g. runtime ≤ 0, rating outside 0–10)
+8. Drop unusable rows (missing title/date)
+9. Cast columns to proper data types
+10. Export final dataset
+
+**Result:** 0 missing release dates, 0 false-zero runtimes, correctly typed columns.
+
+## 📊 Business Questions Answered
+
+- How has production volume changed over time?
+- Which genres dominate the catalogue?
+- Does a bigger budget guarantee a bigger return?
+- Which genres return the most profit per film?
+- What are the highest-grossing and highest-ROI titles?
+- Do audiences reward the same films the box office does?
+
+## 📈 Dashboard (Power BI)
+
+Single-page interactive report with:
+- KPI cards — Total Profit, Average ROI, Total Revenue
+- Profit trend by release year
+- Profit share by genre (donut chart)
+- Audience rating by genre (bar chart)
+- Top-rated titles
+- Slicers for year and release status
